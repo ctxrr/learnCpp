@@ -11,13 +11,14 @@ int main(int argc, char const* argv[])
     int (*p2)[5] = &a;
     int (*p3)[2] = b;
     int (*p4)[5][2] = &b;
-
+    int *p5 = &a[1];
     /* 1.show infomation of a[5]*/
 
     //you can use both the array name and point to access the member
     cout<<a[1]<<" "<<a[5]<<endl;
     cout<<p1[1]<<" "<<p1[5]<<endl;
 
+    cout<<p5[1]<<endl; //p5 point to a[1] so p5+1 point to a[2]
     //this 4 pointer have the same value but different type
     cout<<a<<endl;       //type:int*
     cout<<&a[0]<<endl;   //type:int*
