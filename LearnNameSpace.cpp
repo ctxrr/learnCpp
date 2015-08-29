@@ -56,4 +56,6 @@ void foo3()
     using namespace Tom;
     using namespace Wayne;
     cout<<name<<endl;
+    cout<<Tom::name<<endl;
+    cout<<Wayne::name<<endl;
 }
