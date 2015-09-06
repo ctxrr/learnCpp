@@ -8,8 +8,12 @@ class Human {
     public:
         Human();
         Human(int age,string name);
+
         Human operator+(const Human &e);  //used for ctxrr + wayne
-        Human operator+(int n);     //used for ctxrr + 10
+        Human operator+(int n);           //used for ctxrr + 10
+        bool operator>(const Human &e);   //used for ctxrr > wayne
+        bool operator<(const Human &e);   //used for ctxrr < wayne
+        bool operator==(const Human &e);  //used for ctxrr == wayne
         friend Human operator+(int n,const Human &e); //used for 10 + ctxrr
         friend Human operator!(const Human &e); //used for 10 + ctxrr
         friend void operator<<(ostream &os , const Human &e); // overload operator '<<'
@@ -44,6 +48,24 @@ Human::operator+(int n)
     Human ret;
     ret._age = _age + n;
     return ret;
+}
+
+bool
+Human::operator>(const Human &e)
+{
+    return _age>e._age;
+}
+
+bool
+Human::operator<(const Human &e)
+{
+    return _age<e._age;
+}
+
+bool
+Human::operator==(const Human &e)
+{
+    return _age==e._age;
 }
 
 Human
@@ -95,5 +117,8 @@ int main(int argc, char const* argv[])
     cout<<p3;
     cout<<p4;
 
+    cout<<(ctxrr>wayne)<<endl;
+    cout<<(ctxrr<wayne)<<endl;
+    cout<<(ctxrr==wayne)<<endl;
     return 0;
 }
