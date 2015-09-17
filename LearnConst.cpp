@@ -5,7 +5,8 @@ const int & foo(const int &i);
 class A
 {
     private:
-        int p;
+        mutable int p;
+        int q;
 
     public:
         A(int a) {p=a;}
@@ -16,19 +17,24 @@ class A
 void
 A::show()
 {
-    cout<<"no const"<<p<<endl;
+    cout<<"no const "<<p<<endl;
+    p++;  //true
+    q++;  //true
 }
 
 void
 A::show() const
 {
-    cout<<"const"<<p<<endl;
+    cout<<"const "<<p<<endl;
+    p++;   //true because p is mutable
+    //q++; //error
 }
 
 int main(int argc, char const* argv[])
 {
     int i;
-    i = foo(1);
+    int m = 1;
+    i = foo(m);
     cout<<i<<endl;
     A a(1);
     a.show();  //overload
@@ -39,5 +45,6 @@ int main(int argc, char const* argv[])
 
 const int & foo(const int &i)
 {
+    //i++; //error.you can't change a const value
     return i;
 }
